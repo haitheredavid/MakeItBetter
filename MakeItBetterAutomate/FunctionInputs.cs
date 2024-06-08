@@ -10,21 +10,13 @@ using System.ComponentModel.DataAnnotations;
 public struct FunctionInputs
 {
   /// <summary>
-  /// The object type to count instances of in the given model version.
+  /// The overall vibe you wanna be rocking with
   /// </summary>
   [Required]
-  public string SpeckleTypeToCount;
+  public string Vibe;
 
   /// <summary>
-  /// The total number of the specified type expected.
-  /// </summary>
-  [DefaultValue(10)]
-  [Range(1, 100)]
-  [Required]
-  public int SpeckleTypeTargetCount;
-
-  /// <summary>
-  /// An arbitrary example of using a secret input value.
+  /// We'll keep this in there as an example of api keys and secret 
   /// </summary>
   [Required]
   [Secret]
