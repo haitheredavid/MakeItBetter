@@ -5,6 +5,7 @@ using OpenAI;
 using Speckle.Automate.Sdk;
 using Speckle.Core.Models.Extensions;
 using OpenAI.Interfaces;
+using Serilog;
 
 public static class AutomateFunction
 {
@@ -29,6 +30,8 @@ public static class AutomateFunction
             });
 
             var imageCreateRequest = new ImageEditCreateRequest();
+
+            Console.WriteLine("MIB= getting image from dalle");
 
             var image = await openAiService.CreateImage(functionInputs.Vibe.ToString());
 
