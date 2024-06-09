@@ -46,9 +46,9 @@ public static class AutomateFunction
 
         var url= automationContext.SpeckleClient.ServerUrl;
 
-        Console.WriteLine("Current Server: " + url);
+        Console.WriteLine("MIB=Sever is: " + url);
 
-        automationContext.MarkRunSuccess("\nIs now better\n");
+        automationContext.MarkRunSuccess("\nMIB=Is now better\n");
         
         //automationContext.StoreFileResult(url);
     }
