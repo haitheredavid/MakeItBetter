@@ -6,6 +6,8 @@ using Speckle.Automate.Sdk;
 using Speckle.Core.Models.Extensions;
 using OpenAI.Interfaces;
 using Serilog;
+using OpenAI.ObjectModels.ResponseModels;
+using static System.Net.Mime.MediaTypeNames;
 
 public static class AutomateFunction
 {
@@ -14,28 +16,53 @@ public static class AutomateFunction
       FunctionInputs functionInputs
     )
     {
-        // not sure if this is needed 
-        Console.WriteLine("Starting execution");
-        _ = typeof(ObjectsKit).Assembly; // INFO: Force objects kit to initialize
+        // I dont think this is needed since we just do images
+        //// not sure if this is needed 
+        //Console.WriteLine("Starting execution");
+        //_ = typeof(ObjectsKit).Assembly; // INFO: Force objects kit to initialize
 
         Console.WriteLine("Receiving version");
         var commitObject = await automationContext.ReceiveVersion();
 
         try
         {
-            var openAiService = new OpenAIService(new OpenAiOptions()
-            {
-                ApiKey = functionInputs.ExternalServiceKey
+            // not sure what the fuck this is 
+            var completionResult = new CompletionCreateResponse();
 
-            });
+            //// all of the api shit for dalle
+            //var openAiService = new OpenAIService(new OpenAiOptions()
+            //{
+            //    ApiKey = functionInputs.ExternalServiceKey
 
-            var imageCreateRequest = new ImageEditCreateRequest();
+            //});
+
+            //var imageCreateRequest = new ImageEditCreateRequest();
 
             Console.WriteLine("MIB= getting image from dalle");
 
-            var image = await openAiService.CreateImage(functionInputs.Vibe.ToString());
+            //var imageResult = await openAiService.CreateImage(functionInputs.Vibe.ToString());
 
-            Console.WriteLine("is image successful?", image.Successful == true);
+
+            //if (imageResult.Successful)
+            //{
+            //    var img = string.Join("\n", imageResult.Results.Select(r => r.Url));
+            //    Console.WriteLine($"MIB={img}");
+            //    Console.WriteLine("MIB=Trying to attach image now");
+
+            //    await automationContext.StoreFileResult(img);
+
+            //    Console.WriteLine("MIB=Checking if automation did the thing");
+
+
+            //}
+            //else //handle errors
+            //{
+            //    if (imageResult.Error == null)
+            //    {
+            //        throw new Exception("Unknown Error");
+            //    }
+            //    Console.WriteLine($"{imageResult.Error.Code}: {completionResult.Error.Message}");
+            //}
 
         }
         catch (Exception)
